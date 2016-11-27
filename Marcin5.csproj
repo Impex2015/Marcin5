@@ -93,24 +93,17 @@
     <Compile Include="Enums.cs" />
     <Compile Include="Filters\FilterOptions.cs" />
     <Compile Include="JsonCustomConverters\CustomConverters.cs" />
-    <Compile Include="lib\Account.cs" />
     <Compile Include="lib\APIResource.cs" />
     <Compile Include="lib\Charge.cs" />
     <Compile Include="lib\Customer.cs" />
     <Compile Include="lib\Invoice.cs" />
-    <Compile Include="lib\MarketPlace.cs" />
     <Compile Include="lib\PaymentMethod.cs" />
     <Compile Include="lib\PaymentToken.cs" />
     <Compile Include="lib\Plans.cs" />
-    <Compile Include="lib\Reports.cs" />
     <Compile Include="lib\StandardHttpClient.cs" />
     <Compile Include="lib\Subscription.cs" />
-    <Compile Include="lib\Transfers.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="request\AccountConfigurationRequestMessage.cs" />
-    <Compile Include="request\AccountRequestMessage.cs" />
-    <Compile Include="request\BankVerificationRequestMessage.cs" />
     <Compile Include="request\ChargeRequestMessage.cs" />
     <Compile Include="request\CustomerRequestMessage.cs" />
     <Compile Include="request\FinancialTransactionRequestMessage.cs" />
@@ -119,13 +112,10 @@
     <Compile Include="request\PaymentTokenRequestMessage.cs" />
     <Compile Include="request\PlanRequestMessage.cs" />
     <Compile Include="request\SubscriptionRequestMessage.cs" />
-    <Compile Include="request\VerifyAccountRequestMessage.cs" />
-    <Compile Include="response\AccountRequestWithdrawResponseMessage.cs" />
     <Compile Include="response\AccountResponseMessage.cs" />
     <Compile Include="response\ChargeResponseMessage.cs" />
     <Compile Include="response\FinancialTransactionResponseMessage.cs" />
     <Compile Include="response\GetAccountResponseMessage.cs" />
-    <Compile Include="response\MarketplaceAccoutsResponse.cs" />
     <Compile Include="response\PaggedResponseMessage.cs" />
     <Compile Include="response\PaymentTokenResponse.cs" />
     <Compile Include="response\RequestWithdrawResponseMessage.cs" />
@@ -137,6 +127,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
