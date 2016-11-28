@@ -29,47 +29,62 @@ namespace Marcin5
 
             //DeleteAllSubscriptions();
             //CancelAllInvoices();
-            //DeleteAllInvoices();
+            DeleteAllInvoices();
             //DeleteAllPlans();
-            //DeleteAllCustomers();
+            DeleteAllCustomers();
 
             #endregion
 
             //Create Customer
-            //var customer = CreateCustomer();
+            Console.WriteLine("Creating a customer...");
+            var customer = CreateCustomer();
             //Create Payment Method
-            //var paymentMethod = CreatePaymentMethod(customer.ID);
+            Console.WriteLine(PrettifyJSON(customer));
+            Console.ReadLine();
+            Console.WriteLine("Creating a payment method...");
+            var paymentMethod = CreatePaymentMethod(customer.ID);
+            Console.WriteLine(PrettifyJSON(paymentMethod));
+            Console.ReadLine();
             //Attach Payment Method to Customer
-            //var result = AttachPaymentMethod(customer.ID, paymentMethod.Id, "My First Credit Card");
+            Console.WriteLine("Attaching a payment method to a customer...");
+            var result = AttachPaymentMethod(customer.ID, paymentMethod.Id, "My First Credit Card");
+            Console.WriteLine(PrettifyJSON(result));
+            Console.ReadLine();
             //Create a second payment method
-            //var paymentMethod2 = CreatePaymentMethod(customer.ID);
+            Console.WriteLine("Creating a payment method...");
+            var paymentMethod2 = CreatePaymentMethod(customer.ID);
+            Console.WriteLine(PrettifyJSON(paymentMethod2));
+            Console.ReadLine();
             //Attach Payment Method to Customer
-            //var result2 = AttachPaymentMethod(customer.ID, paymentMethod2.Id, "My Second Credit Card");
+            var result2 = AttachPaymentMethod(customer.ID, paymentMethod2.Id, "My Second Credit Card");
             //Chage the customer/card this will charge the first card and create a Paid invoice
-            //var chargeResult = ChargeCard(customer, result.id);
-
+            Console.WriteLine("Charge a customer's card...");
+            var chargeResult = ChargeCard(customer, result.id);
+            Console.WriteLine(PrettifyJSON(chargeResult));
+            Console.ReadLine();
 
             //Read Funcionalities
             //Look-up a customer
-            var customerInfo = new Customer().GetAsync("6D0122D8B76C44FB8E5123A372951C98").Result;
-            var custJson = JsonConvert.SerializeObject(customerInfo);
-            var custJsonFormatted = JToken.Parse(custJson).ToString(Formatting.Indented);
-            Console.WriteLine(custJsonFormatted);
-            
-            //Look-up payment methods for this customer
-            var paymentMethods = new PaymentMethod("6D0122D8B76C44FB8E5123A372951C98").GetAsync().Result;
-            foreach (var paymentMethod in paymentMethods)
-            {
-                var json = JsonConvert.SerializeObject(paymentMethod);
-                var jsonFormatted = JToken.Parse(json).ToString(Formatting.Indented);
-                Console.WriteLine(jsonFormatted);
-            }
-            
-            
+            Console.WriteLine("List customer info...");
+            var customerInfo = new Customer().GetAsync(customer.ID).Result;
+            Console.WriteLine(PrettifyJSON(customerInfo));
             Console.ReadLine();
-
+            //Look-up payment methods for this customer
+            Console.WriteLine("List a customer's payment methods...");
+            var paymentMethods = new PaymentMethod(customer.ID).GetAsync().Result;
+            foreach (var paymentMethodItem in paymentMethods)
+            {
+                Console.WriteLine(PrettifyJSON(paymentMethodItem));
+            }
+            Console.ReadLine();
         }
 
+        private static string PrettifyJSON(Object json)
+        {
+            var custJson = JsonConvert.SerializeObject(json);
+            var custJsonFormatted = JToken.Parse(custJson).ToString(Formatting.Indented);
+            return custJsonFormatted;
+        }
         private static CustomerModel CreateCustomer()
         {
             //Create a customer
@@ -94,7 +109,7 @@ namespace Marcin5
                 return myClient;
             }
         }
-        private static PaymentTokenResponse CreatePaymentMethod(string apiToken)
+        private static PaymentTokenResponseMessage CreatePaymentMethod(string apiToken)
         {
             var paymentInfo = new PaymentInfoModel
             {
@@ -197,7 +212,7 @@ namespace Marcin5
             var invoices = x.GetAsync().Result;
             foreach (var item in invoices.Items)
             {
-                if (item.status == "canceled")
+                if (item.status == "paid")
                     DeleteInvoice(item.id);
             }
         }

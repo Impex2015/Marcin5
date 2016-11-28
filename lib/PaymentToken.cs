@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using iugu.net.Response;
 using Marcin5.request;
+using Marcin5.response;
 
 namespace Marcin5.lib
 {
@@ -24,9 +24,9 @@ namespace Marcin5.lib
         /// </summary>
         /// <param name="requestMessage">Parametros de entrada da requestMessage</param>
         /// <returns>Resposta da Api para o PaymentToken</returns>
-        public async Task<PaymentTokenResponse> CreateAsync(PaymentTokenRequestMessage requestMessage)
+        public async Task<PaymentTokenResponseMessage> CreateAsync(PaymentTokenRequestMessage requestMessage)
         {
-            var retorno = await PostAsync<PaymentTokenResponse>(requestMessage).ConfigureAwait(false);
+            var retorno = await PostAsync<PaymentTokenResponseMessage>(requestMessage).ConfigureAwait(false);
             return retorno;
         }
     }

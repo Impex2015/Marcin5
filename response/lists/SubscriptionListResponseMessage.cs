@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using iugu.net.Entity;
-using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 
 namespace Marcin5.response
@@ -16,7 +10,7 @@ namespace Marcin5.response
         public List<Facet> facets;
     }
 
-    public abstract class Facet
+    public class Facet
     {
         [JsonProperty("_type")]
         public string Type { get; set; }
@@ -25,7 +19,7 @@ namespace Marcin5.response
         public string Count { get; set; }
     }
 
-    public abstract class SubscriptionListResponse
+    public class SubscriptionListResponse
     {
         [JsonProperty("facets")]
         public Facet Facets { get; set; }

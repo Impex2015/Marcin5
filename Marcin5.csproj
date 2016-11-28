@@ -117,7 +117,7 @@
     <Compile Include="response\FinancialTransactionResponseMessage.cs" />
     <Compile Include="response\GetAccountResponseMessage.cs" />
     <Compile Include="response\PaggedResponseMessage.cs" />
-    <Compile Include="response\PaymentTokenResponse.cs" />
+    <Compile Include="response\PaymentTokenResponseMessage.cs" />
     <Compile Include="response\RequestWithdrawResponseMessage.cs" />
     <Compile Include="response\SimpleResponseMessage.cs" />
     <Compile Include="response\lists\SubscriptionListResponseMessage.cs" />

@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Marcin5.entity
 {
-    public abstract class CustomersModel
+    public class CustomersModel
     {
         [JsonProperty("totalItems")]
         public int TotalItems { get; set; }

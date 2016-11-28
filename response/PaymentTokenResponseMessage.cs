@@ -1,8 +1,7 @@
 ﻿using Newtonsoft.Json;
-
-namespace iugu.net.Response
+namespace Marcin5.response
 {
-    public class PaymentTokenResponse
+    public class PaymentTokenResponseMessage
     {
         /// <summary>
         /// Token Criado
