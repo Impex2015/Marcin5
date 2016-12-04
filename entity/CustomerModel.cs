@@ -25,5 +25,6 @@ namespace Marcin5.entity
 
         [JsonProperty("custom_variables")]
         public List<object> CustomVariables { get; set; }
+        public string Teste { get; set; }
     }
 }
